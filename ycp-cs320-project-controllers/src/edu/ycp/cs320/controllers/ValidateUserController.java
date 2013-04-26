@@ -20,6 +20,8 @@ public class ValidateUserController {
 	 */
 	public boolean containsUser(IDatabase db, User user){
 		
+		System.out.println("Database is a " + db.getClass().getName());
+		
 		Collection<User> allUsers = db.getUsersFromDB().values();
 		for (User dbUser : allUsers) {
 			if (user.getUsername().equals(dbUser.getUsername()) && user.getPassword().equals(dbUser.getPassword())) {

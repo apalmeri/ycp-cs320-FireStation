@@ -13,37 +13,19 @@ import java.util.Map;
  */
 public interface IDatabase {
 	
-	public Map<Integer, User> getUsersFromDB();	
-	
-	public void addEquipmentToDB();
-	
-	public void addContactToDB();
-	
-	public void addUserToDB(User user);
-	
-	public List<ContactInfo> getContactsFromDB();
-	
-	
-	public ArrayList<FireApparatus> getFireApparatusFromDB();
-	
-	public int addFireApparatusToDB(FireApparatus fireApparatus);
-	
-
-	public int addFireApparatusSpecToDB(FireApparatusSpec fireApparatusSpec);	
-
-	
-
-	
-	public ArrayList<FireCalendar> getFireEventFromDB();
-
-	public List<Events> getEventsFromDB();
-
-	List<Equipment> getEquipmentFromDB();
-
+	public Map<Integer, User> getUsersFromDB();		
+	public void addEquipmentToDB();	
+	public void addContactToDB();	
+	public void addUserToDB(User user);					
+	public void addEventsToDB();	
 	public int addFireCalendarEventToDB(FireCalendar fireCalendar);
-
-	int addFireCalendarEventToDB(FireCalendarEvent fireCalendar);
-
-
+	
+	public ArrayList<ContactInfo> getContactsFromDB();	
+	public List<Equipment> getEquipmentFromDB();	
+	public ArrayList<FireApparatus> getFireApparatusFromDB();
+	public ArrayList<FireCalendar> getFireEventFromDB();
+	public List<Events> getEventsFromDB();
+	ArrayList<FireApparatus> getFireApparatusSpecFromDB();
+	int addFireApparatusSpecToDB(FireApparatusSpec fireApparatusSpec);
 
 }
