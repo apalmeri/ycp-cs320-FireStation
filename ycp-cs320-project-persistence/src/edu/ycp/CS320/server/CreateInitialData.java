@@ -14,12 +14,12 @@ public class CreateInitialData {
 //		User drew = new User(-1, "drew", "pw");
 //		User jake = new User(-1, "jake", "pw");
 //		User josh = new User(-1, "josh", "pw");
-//		User alana = new User(-1, "alana", "pw");				
+		User alana = new User(-1, "alana", "pw");				
 //		
 //		db.addUserToDB(drew);
 //		db.addUserToDB(jake);
 //		db.addUserToDB(josh);
-//		db.addUserToDB(alana);
+		db.addUserToDB(alana);
 		
 		FireApparatus fireApparatus = new FireApparatus(new FireApparatusSpec("Pierce", "PUC", "Engine 62-5", 2009, "Engine", "this an engine"));		
 		db.addFireApparatusToDB(fireApparatus);
