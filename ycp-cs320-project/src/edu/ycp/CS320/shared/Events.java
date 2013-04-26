@@ -1,3 +1,4 @@
+
 package edu.ycp.CS320.shared;
 
 import edu.ycp.CS320.equipment.EquipmentSpec;
@@ -42,3 +43,4 @@ public class Events {
 	
 
 }
+

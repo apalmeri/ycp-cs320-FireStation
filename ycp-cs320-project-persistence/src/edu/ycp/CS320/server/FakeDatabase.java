@@ -11,7 +11,10 @@ import edu.ycp.CS320.shared.ContactInfoType;
 import edu.ycp.CS320.shared.Equipment;
 import edu.ycp.CS320.shared.Events;
 import edu.ycp.CS320.shared.FireApparatus;
+import edu.ycp.CS320.shared.FireCalendarEvent;
+
 import edu.ycp.CS320.shared.FireApparatusSpec;
+
 import edu.ycp.CS320.shared.FireCalendar;
 import edu.ycp.CS320.shared.IDatabase;
 import edu.ycp.CS320.shared.User;
@@ -52,7 +55,7 @@ public class FakeDatabase implements IDatabase, Serializable {
 		fireApparatus.getFireApparatusSpec().setModel("Arrow XT PUC");
 		fireApparatus.getFireApparatusSpec().setYear(2009);
 		fireApparatus.getFireApparatusSpec().setType("Pumper-Rescue");
-		addFireApparatusToDBOld(fireApparatus);
+		addFireApparatusToDB(fireApparatus);
 		
 		for(int i=0; i<4; i++){
 			FireApparatus fireApparatus_1 = new FireApparatus();
@@ -62,7 +65,7 @@ public class FakeDatabase implements IDatabase, Serializable {
 			fireApparatus_1.getFireApparatusSpec().setModel("Arrow XT PUC");
 			fireApparatus_1.getFireApparatusSpec().setYear(2009);
 			fireApparatus_1.getFireApparatusSpec().setType("Pumper-Rescue");
-			addFireApparatusToDBOld(fireApparatus_1);
+			addFireApparatusToDB(fireApparatus_1);
 		}		
 	}
 
@@ -88,7 +91,7 @@ public class FakeDatabase implements IDatabase, Serializable {
 	 * @param fireApparatus
 	 * @return The number of FireApparatus objects in the list
 	 */
-	public int addFireApparatusToDBOld(FireApparatus fireApparatus) {
+	public int addFireApparatusToDB(FireApparatus fireApparatus) {
 		fireApparatusList.add(fireApparatus);
 		
 		return fireApparatusList.size()-1;
@@ -98,7 +101,7 @@ public class FakeDatabase implements IDatabase, Serializable {
 		return userMap;
 	}
 
-	public ArrayList<ContactInfo> getContactsFromDB() {
+	public List<ContactInfo> getContactsFromDB() {
 		return null;
 	}
 
@@ -123,6 +126,19 @@ public class FakeDatabase implements IDatabase, Serializable {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	@Override
+
+	public List<Events> getEventsFromDB() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public int addFireApparatusSpecToDB(FireApparatusSpec fireApparatusSpec) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 
 	@Override
 	public int addFireCalendarEventToDB(FireCalendar fireCalendar) {
@@ -131,22 +147,14 @@ public class FakeDatabase implements IDatabase, Serializable {
 	}
 
 	@Override
-	public void addEventsToDB() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public List<Events> getEventsFromDB() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public int addFireApparatusToDB(FireApparatus fireApparatus) {
+	public int addFireCalendarEventToDB(FireCalendarEvent fireCalendar) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+
+
+
 
 	
 
