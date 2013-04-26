@@ -20,12 +20,12 @@ public class CreateInitialData {
 //		db.addUserToDB(drew);
 //		db.addUserToDB(jake);
 //		db.addUserToDB(josh);
-		db.addUserToDB(alana);
+	db.addUserToDB(alana);
 		
 
 		
-		FireCalendarEvent event1 = new FireCalendarEvent("TITLE", "LOCATION", "STARTTIME", "ENDTIME", "DESCRIPTION", "DATE");		
-		db.addFireCalendarEventToDB(event1);
+	//	FireCalendarEvent event1 = new FireCalendarEvent("TITLE", "LOCATION", "STARTTIME", "ENDTIME", "DESCRIPTION", "DATE");		
+	//	db.addFireCalendarEventToDB(event1);
 		
 		
 	//FireApparatusSpec spec1 = new FireApparatusSpec("x", "y", "z", 2013, "engine", "this an engine");		

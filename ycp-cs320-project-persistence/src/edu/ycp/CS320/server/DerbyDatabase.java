@@ -92,18 +92,18 @@ public class DerbyDatabase implements IDatabase {
 			@Override
 			public Boolean run(Connection conn) throws SQLException {
 				
-				//PreparedStatement stmtUsers = null;
+				PreparedStatement stmtUsers = null;
 				//PreparedStatement stmtApparatusSpec = null;
-				PreparedStatement stmtCalendar = null;
+				//PreparedStatement stmtCalendar = null;
 				
 				try {
-//					stmtUsers = conn.prepareStatement(
-//							"create table users (" +
-//							"id INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1), " +
-//							"name VARCHAR(64) NOT NULL, " +
-//							"password VARCHAR(64) " +
-//							")"
-//													);
+				stmtUsers = conn.prepareStatement(
+							"create table users (" +
+						"id INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1), " +
+						"name VARCHAR(64) NOT NULL, " +
+							"password VARCHAR(64) " +
+						")"
+													);
 					
 				/*	stmtApparatusSpec = conn.prepareStatement(
 							"create table fire_apparatus_spec (" +
@@ -116,7 +116,7 @@ public class DerbyDatabase implements IDatabase {
 							"description VARCHAR(64)" +
 							")"
 															);*/
-					stmtCalendar = conn.prepareStatement(
+					/*stmtCalendar = conn.prepareStatement(
 							"create table fire_calender (" +
 							"id INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1), " +
 							"title VARCHAR(64), " +
@@ -124,19 +124,19 @@ public class DerbyDatabase implements IDatabase {
 							"StartTime VARCHAR(64) NOT NULL, " +
 							"EndTime VARCHAR(64), " +
 							"description VARCHAR(64), " +
-							"Date VARCHAR(64)" +
-							")"
-															);
+							"Date VARCHAR(64)" +*/
+							//")"
+															//);
 															
 															
-					//stmtUsers.executeUpdate();
+					stmtUsers.executeUpdate();
 					//stmtApparatusSpec.executeUpdate();
-					stmtCalendar.executeUpdate();
+					//stmtCalendar.executeUpdate();
 					
 				} finally {
-					//DBUtil.closeQuietly(stmtUsers);
+					DBUtil.closeQuietly(stmtUsers);
 					//DBUtil.closeQuietly(stmtApparatusSpec);
-					DBUtil.closeQuietly(stmtCalendar);
+					//DBUtil.closeQuietly(stmtCalendar);
 				}
 				
 				return true;
