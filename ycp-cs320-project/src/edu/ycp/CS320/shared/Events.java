@@ -1,14 +1,10 @@
 
 package edu.ycp.CS320.shared;
 
-import edu.ycp.CS320.equipment.EquipmentSpec;
-
 public class Events {
 	private String equipmentName = "";
 	private int amount;
-	private String condition = "";
-	private EquipmentSpec spec;
-	
+	private String condition = "";	
 	
 	public void setName(String equipmentName ) {
 		this.equipmentName = equipmentName;
@@ -32,15 +28,7 @@ public class Events {
 	
 	public String getCondition() {
 		return  condition;
-	}
-	
-	public EquipmentSpec getSpec()
-	{
-		return null;
-	}
-	
-	
-	
+	}	
 
 }
 
