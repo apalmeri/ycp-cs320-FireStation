@@ -15,6 +15,7 @@ import edu.ycp.CS320.shared.FireApparatusSpec;
 import edu.ycp.CS320.shared.FireCalendar;
 import edu.ycp.CS320.shared.IDatabase;
 import edu.ycp.CS320.shared.User;
+import edu.ycp.CS320.shared.UserWithContactInfo;
 
 
 public class FakeDatabase implements IDatabase, Serializable {
@@ -98,7 +99,7 @@ public class FakeDatabase implements IDatabase, Serializable {
 		return userMap;
 	}
 
-	public ArrayList<ContactInfo> getContactsFromDB() {
+	public ArrayList<UserWithContactInfo> getContactsFromDB() {
 		return null;
 	}
 

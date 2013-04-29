@@ -18,6 +18,7 @@ import edu.ycp.CS320.shared.FireApparatusSpec;
 import edu.ycp.CS320.shared.FireCalendar;
 import edu.ycp.CS320.shared.IDatabase;
 import edu.ycp.CS320.shared.User;
+import edu.ycp.CS320.shared.UserWithContactInfo;
 
 public class DerbyDatabase implements IDatabase {
 	private static final String DATASTORE = "H:/firestation.db";
@@ -229,7 +230,7 @@ public class DerbyDatabase implements IDatabase {
 	}
 
 	@Override
-	public ArrayList<ContactInfo> getContactsFromDB() {
+	public ArrayList<UserWithContactInfo> getContactsFromDB() {
 		// TODO Auto-generated method stub
 		return null;
 	}

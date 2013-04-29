@@ -16,12 +16,16 @@ import edu.ycp.CS320.shared.ContactInfo;
 import edu.ycp.CS320.shared.FireApparatus;
 import edu.ycp.CS320.shared.IPublisher;
 import edu.ycp.CS320.shared.ISubscriber;
+import edu.ycp.CS320.shared.UserWithContactInfo;
+
 import com.google.gwt.user.client.ui.Button;
 //add commment
 public class ContactInfoView extends Composite implements ISubscriber {
 	private Button btnHomePage;
 
-	private List<ContactInfo> contactInfoList;
+	//private List<ContactInfo> contactInfoList;
+	private ListBox listBox;
+	private ListBox listBox_1;
 
 	public ContactInfoView() {
 
@@ -29,7 +33,7 @@ public class ContactInfoView extends Composite implements ISubscriber {
 		initWidget(layout);
 		layout.setSize("627px", "523px");
 
-		final ListBox listBox = new ListBox();
+		listBox = new ListBox();
 		listBox.addClickHandler(new ClickHandler() {
 			@Override
 			public void onClick(ClickEvent event) {
@@ -41,7 +45,7 @@ public class ContactInfoView extends Composite implements ISubscriber {
 		layout.setWidgetTopHeight(listBox, 48.0, Unit.PX, 339.0, Unit.PX);
 		listBox.setVisibleItemCount(5);
 
-		ListBox listBox_1 = new ListBox();
+		listBox_1 = new ListBox();
 		layout.add(listBox_1);
 		layout.setWidgetLeftWidth(listBox_1, 365.0, Unit.PX, 235.0, Unit.PX);
 		layout.setWidgetTopHeight(listBox_1, 48.0, Unit.PX, 339.0, Unit.PX);
@@ -65,7 +69,7 @@ public class ContactInfoView extends Composite implements ISubscriber {
 			}
 		});
 
-		contactInfoList = new ArrayList<ContactInfo>();
+		ArrayList<UserWithContactInfo> contactInfoList = new ArrayList<UserWithContactInfo>();
 	}
 
 	public void activate() {
@@ -75,12 +79,13 @@ public class ContactInfoView extends Composite implements ISubscriber {
 	}
 
 	private void loadContactList() {
-		RPC.contactinfoservice.loadContactInfo(new AsyncCallback<ArrayList<ContactInfo>>() {
+		RPC.contactinfoservice.loadContactInfo(new AsyncCallback<ArrayList<UserWithContactInfo>>() {
 			@Override
-			public void onSuccess(ArrayList<ContactInfo> ContactList) {		
+			public void onSuccess(ArrayList<UserWithContactInfo> ContactList) {		
 
 
-				contactInfoList.addAll(ContactList);
+				//.addAll(ContactList);
+				//listBox.addItem(UserWithContactInfo);
 				update();
 			}
 
@@ -103,6 +108,9 @@ public class ContactInfoView extends Composite implements ISubscriber {
 
 	private void update() {
 		// clear list box, add all contacts to it
-
+		listBox.clear();
+		//for (UserWithContactInfo info : contactInfoList) {
+		//	listBox.addItem(info);
+		}
 	}
-}
+//}

@@ -5,21 +5,21 @@ import java.util.ArrayList;
 
 import edu.ycp.CS320.shared.ContactInfo;
 import edu.ycp.CS320.shared.IDatabase;
+import edu.ycp.CS320.shared.UserWithContactInfo;
 
 
 public class GetContactInfoController implements Serializable {
 	
+/*	
 	
-	
-	/*@Override
-	public ArrayList<ContactInfo> loadContactInfo() {
+	public ArrayList<UserWithContactInfo> loadContactInfo() {
 		GetContactInfoController contactInfoController = new GetContactInfoController();
 		
 		IDatabase db = DatabaseSingleton.instance();
 		
-		ArrayList<ContactInfo> result = contactInfoController.getInfo(db);
+		ArrayList<UserWithContactInfo> result = contactInfoController.getInfo(db);
 		if (result == null) {
-			result = new ArrayList<ContactInfo>();
+			result = new ArrayList<UserWithContactInfo>();
 		}
 		return result;
 			
