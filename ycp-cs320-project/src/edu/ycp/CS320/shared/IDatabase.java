@@ -19,7 +19,7 @@ public interface IDatabase {
 	public void addUserToDB(User user);		
 	public int addFireApparatusToDB(FireApparatus fireApparatus);	
 	public int addFireCalendarEventToDB(FireCalendar fireCalendar);
-	public ArrayList<ContactInfo> getContactsFromDB();	
+	public ArrayList<UserWithContactInfo> getContactsFromDB();	
 	public List<Equipment> getEquipmentFromDB();	
 	public ArrayList<FireApparatus> getFireApparatusFromDB();	
 	public ArrayList<FireCalendar> getFireEventFromDB();
