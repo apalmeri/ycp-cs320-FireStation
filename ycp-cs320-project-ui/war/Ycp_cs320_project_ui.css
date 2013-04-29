@@ -75,3 +75,36 @@ Title {
 .ApparatusViewScrollPanelStyle {
 	border: 3px solid Black;
 }
+
+.ApparatusDetailLabels {
+	color: Black;
+	font-stretch: normal;
+	font-size: 16px;
+	font-weight: bold;
+}
+.LoginButton {
+	color: Black;
+	font-weight: bold;
+	background-color: forestgreen;
+}
+.NewUserButton {
+	font-weight: bold;
+	background-color: deepskyblue;
+}
+.ApparatusDetailsText {
+	font-size: 14px;
+	font-style: normal;
+	font-weight: normal;
+}
+.AddApparatusStyle {
+	background-color: #6666cc;
+}
+.AddApparatusLabels {
+	color: #ff0000;
+	font-size: 14px;
+	font-weight: bold;
+}
+.submitButton {
+	background-color: darkgreen;
+}
+

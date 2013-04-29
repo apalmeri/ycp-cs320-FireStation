@@ -30,7 +30,6 @@ public class CreateInitialData {
 //		db.addUserToDB(jake);
 //		db.addUserToDB(josh);
 	db.addUserToDB(alana);
-		
 
 		
 	//	FireCalendarEvent event1 = new FireCalendarEvent("TITLE", "LOCATION", "STARTTIME", "ENDTIME", "DESCRIPTION", "DATE");		
@@ -60,6 +59,7 @@ public class CreateInitialData {
 
 //		FireApparatus app1 = new FireApparatus();
 //		app1.setFireApparatusSpec(spec1); TODO: implement addFireApparatus derby method
+
 //		FireApparatus fireApparatus = new FireApparatus(new FireApparatusSpec("Pierce", "Arrow XTC PUC", "Engine 62-1", 2009, "Pumper", "This is the first out engine to fire calls"));		
 //		db.addFireApparatusToDB(fireApparatus);
 //		

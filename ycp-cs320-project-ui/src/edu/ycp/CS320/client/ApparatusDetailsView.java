@@ -1,31 +1,15 @@
 package edu.ycp.CS320.client;
 
-import java.util.ArrayList;
-
 import com.google.gwt.dom.client.Style.Unit;
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.user.client.rpc.AsyncCallback;
-import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
-import com.google.gwt.user.client.ui.InlineLabel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.LayoutPanel;
-import com.google.gwt.user.client.ui.PasswordTextBox;
-import com.google.gwt.user.client.ui.TextBox;
-
 import edu.ycp.CS320.shared.*;
-import com.google.gwt.user.client.ui.Image;
-import com.google.gwt.user.client.ui.ScrollPanel;
-import com.google.gwt.user.client.ui.FlowPanel;
-
-//mws
 
 public class ApparatusDetailsView extends Composite implements ISubscriber {
 	private LayoutPanel layoutPanel;
 	private Label lblName;
-	//private ArrayList<FireApparatus> fireApparatusList;
 	private FireApparatus model;
 	private Label lblType;
 	private Label lblModel;
@@ -40,10 +24,11 @@ public class ApparatusDetailsView extends Composite implements ISubscriber {
 	private Label lblYear_1;
 	
 	
-	public ApparatusDetailsView(/*String name, String make, String model, String type, String description, String year*/) {			
+	public ApparatusDetailsView() {			
 		layoutPanel = new LayoutPanel();
 		layoutPanel.setStyleName("ApparatusViewStyle");
 		initWidget(layoutPanel);
+
 		layoutPanel.setSize("271px", "203px");
 		
 //		lblTitle = new Label("Apparatus Page!!!");
@@ -53,6 +38,8 @@ public class ApparatusDetailsView extends Composite implements ISubscriber {
 //		layoutPanel.setWidgetLeftWidth(lblTitle, 333.0, Unit.PX, 193.0, Unit.PX);
 //		layoutPanel.setWidgetTopHeight(lblTitle, 17.0, Unit.PX, 25.0, Unit.PX);
 		
+
+		layoutPanel.setSize("2200px", "150px");
 		lblName = new Label("Name: ");
 		layoutPanel.add(lblName);	
 		layoutPanel.setWidgetLeftWidth(lblName, 0.0, Unit.PX, 100.0, Unit.PX);

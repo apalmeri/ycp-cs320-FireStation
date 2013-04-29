@@ -135,8 +135,9 @@ public class FakeDatabase implements IDatabase, Serializable {
 	public int addFireApparatusToDB(FireApparatus fireApparatus) {
 		// TODO Auto-generated method stub
 		return 0;
-
 	}
+
+	
 
 	@Override
 	public List<Events> getEventsFromDB() {
@@ -155,5 +156,4 @@ public class FakeDatabase implements IDatabase, Serializable {
 		// TODO Auto-generated method stub
 		return 0;
 	}	
-
 }
