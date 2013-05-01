@@ -85,7 +85,8 @@ public class ContactInfoView extends Composite implements ISubscriber {
 
 
 				//.addAll(ContactList);
-				//listBox.addItem(UserWithContactInfo);
+				//listBox.addItem(ContactList);
+				listBox.addItem("alana");
 				update();
 			}
 
