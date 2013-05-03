@@ -6,6 +6,7 @@ import java.util.List;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.LayoutPanel;
+import com.google.gwt.core.shared.GWT;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.event.dom.client.ClickHandler;
@@ -23,7 +24,7 @@ import com.google.gwt.user.client.ui.Button;
 public class ContactInfoView extends Composite implements ISubscriber {
 	private Button btnHomePage;
 
-	//private List<ContactInfo> contactInfoList;
+	private ArrayList<UserWithContactInfo> contactInfoList; // model
 	private ListBox listBox;
 	private ListBox listBox_1;
 
@@ -69,7 +70,7 @@ public class ContactInfoView extends Composite implements ISubscriber {
 			}
 		});
 
-		ArrayList<UserWithContactInfo> contactInfoList = new ArrayList<UserWithContactInfo>();
+		contactInfoList = new ArrayList<UserWithContactInfo>();
 	}
 
 	public void activate() {
@@ -82,11 +83,10 @@ public class ContactInfoView extends Composite implements ISubscriber {
 		RPC.contactinfoservice.loadContactInfo(new AsyncCallback<ArrayList<UserWithContactInfo>>() {
 			@Override
 			public void onSuccess(ArrayList<UserWithContactInfo> ContactList) {		
-
-
-				//.addAll(ContactList);
-				//listBox.addItem(ContactList);
-				listBox.addItem("alana");
+				GWT.log("received users/contact info");
+				contactInfoList.clear();
+				contactInfoList.addAll(ContactList);
+				
 				update();
 			}
 
@@ -100,7 +100,6 @@ public class ContactInfoView extends Composite implements ISubscriber {
 	}
 
 
-
 	@Override
 	public void eventOccurred(Object key, IPublisher publisher, Object hint) {
 		// TODO Auto-generated method stub
@@ -110,8 +109,10 @@ public class ContactInfoView extends Composite implements ISubscriber {
 	private void update() {
 		// clear list box, add all contacts to it
 		listBox.clear();
-		//for (UserWithContactInfo info : contactInfoList) {
-		//	listBox.addItem(info);
+		
+		for (UserWithContactInfo info : contactInfoList) {
+			String s = info.getUser().getUsername() + " - " + info.getContactInfo().getCellPhoneNumber(); 
+			listBox.addItem(s);
 		}
 	}
-//}
+}

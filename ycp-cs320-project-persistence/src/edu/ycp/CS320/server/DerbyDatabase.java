@@ -90,14 +90,15 @@ public class DerbyDatabase implements IDatabase {
 			public Boolean run(Connection conn) throws SQLException {
 				PreparedStatement stmtContacts = null;	
 				PreparedStatement stmtEvents = null;
+				PreparedStatement stmtUsers = null;
 				try {
-//					stmtUsers = conn.prepareStatement(
-//							"create table users (" +
-//							"id INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1), " +
-//							"name VARCHAR(64) NOT NULL, " +
-//							"password VARCHAR(64) " +
-//							")"
-//													);
+					stmtUsers = conn.prepareStatement(
+							"create table users (" +
+							"id INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1), " +
+							"name VARCHAR(64) NOT NULL, " +
+							"password VARCHAR(64) " +
+							")"
+													);
 //					stmtApparatusSpec = conn.prepareStatement(
 //							"create table fire_apparatus_spec (" +
 //							"id INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1), " +
@@ -129,7 +130,8 @@ public class DerbyDatabase implements IDatabase {
 													  );
 
 					stmtContacts.executeUpdate();
-					stmtEvents.executeUpdate();					
+					stmtEvents.executeUpdate();	
+					stmtUsers.executeUpdate();
 
 				} finally {
 					DBUtil.closeQuietly(stmtContacts);

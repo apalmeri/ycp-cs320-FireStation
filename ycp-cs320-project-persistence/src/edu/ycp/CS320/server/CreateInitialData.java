@@ -29,7 +29,7 @@ public class CreateInitialData {
 //		db.addUserToDB(drew);
 //		db.addUserToDB(jake);
 //		db.addUserToDB(josh);
-	db.addUserToDB(alana);
+		db.addUserToDB(alana);
 
 		
 	//	FireCalendarEvent event1 = new FireCalendarEvent("TITLE", "LOCATION", "STARTTIME", "ENDTIME", "DESCRIPTION", "DATE");		
