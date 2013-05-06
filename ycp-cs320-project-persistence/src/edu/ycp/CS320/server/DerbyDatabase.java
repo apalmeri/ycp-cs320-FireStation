@@ -234,7 +234,27 @@ public class DerbyDatabase implements IDatabase {
 	@Override
 	public ArrayList<UserWithContactInfo> getContactsFromDB() {
 		// TODO Auto-generated method stub
-		return null;
+		return databaseRun(new ITransaction<ArrayList<UserWithContactInfo>>() {			
+			@Override
+			public ArrayList<UserWithContactInfo> run(Connection conn) throws SQLException {
+				PreparedStatement stmt = null;
+				ResultSet resultSet = null;
+
+				try {
+					ArrayList<UserWithContactInfo> result = new ArrayList<UserWithContactInfo>();
+
+					stmt = conn.prepareStatement("users");
+
+					resultSet = stmt.executeQuery();
+					while (resultSet.next()) {	
+						result.add(new UserWithContactInfo());						
+					}					
+					return result;
+				} finally {
+					DBUtil.closeQuietly(stmt);
+				}
+			}
+		});
 	}
 
 	@Override
