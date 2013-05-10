@@ -16,6 +16,7 @@ public interface IDatabase {
 	public Map<Integer, User> getUsersFromDB();		
 	public void addEquipmentToDB();		
 	public void addContactToDB();
+	public ContactInfo addContactInfo(ContactInfo contactInfo);
 	public void addUserToDB(User user);		
 	public int addFireApparatusToDB(FireApparatus fireApparatus);	
 	public int addFireCalendarEventToDB(FireCalendar fireCalendar);

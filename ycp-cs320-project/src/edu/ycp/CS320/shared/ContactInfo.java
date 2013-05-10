@@ -1,6 +1,9 @@
 package edu.ycp.CS320.shared;
 
-public class ContactInfo {
+import java.io.Serializable;
+
+public class ContactInfo implements Serializable {
+	private int id;
 	private int userId;
 	private ContactInfoType type;
 	private String homePhoneNumber = "";
@@ -9,6 +12,14 @@ public class ContactInfo {
 	
 	public ContactInfo() {
 		
+	}
+	
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	public int getId() {
+		return id;
 	}
 	
 	public void setUserId(int userId) {

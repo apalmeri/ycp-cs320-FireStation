@@ -38,8 +38,7 @@ public class LoginView extends Composite implements ISubscriber {
 		layoutPanel.setStyleName("fireStation-panelBackground");
 
 		initWidget(layoutPanel);		
-		layoutPanel.setSize("870px", "432px");
-
+		layoutPanel.setSize("2000px", "2000px");
 
 
 		

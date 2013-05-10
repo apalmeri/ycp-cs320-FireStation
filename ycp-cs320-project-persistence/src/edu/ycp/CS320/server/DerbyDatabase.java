@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 import edu.ycp.CS320.shared.ContactInfo;
+import edu.ycp.CS320.shared.ContactInfoType;
 import edu.ycp.CS320.shared.Equipment;
 import edu.ycp.CS320.shared.Events;
 import edu.ycp.CS320.shared.FireApparatus;
@@ -114,6 +115,7 @@ public class DerbyDatabase implements IDatabase {
 					stmtContacts = conn.prepareStatement(
 							"create table contact_info (" +
 							"id INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1), " +
+							"user_id INTEGER NOT NULL, " +
 							"type VARCHAR(64), " +
 							"home_phone_number VARCHAR(64), " +
 							"cell_phone_number VARCHAR(64), " +
@@ -194,6 +196,44 @@ public class DerbyDatabase implements IDatabase {
 	public void addContactToDB() {
 		// TODO Auto-generated method stub		
 	}
+	
+	@Override
+	public ContactInfo addContactInfo(final ContactInfo contactInfo) {
+		return databaseRun(new ITransaction<ContactInfo>() {
+			@Override
+			public ContactInfo run(Connection conn) throws SQLException {
+				PreparedStatement stmt = null;
+				ResultSet keys = null;
+				
+				try {
+					stmt = conn.prepareStatement(
+						"insert into contact_info(user_id, type, home_phone_number, cell_phone_number, name) values (?, ?, ?, ?, ?)",
+						PreparedStatement.RETURN_GENERATED_KEYS
+					);
+					stmt.setInt(1, contactInfo.getUserId());
+					ContactInfoType type = contactInfo.getType();
+					stmt.setString(2, type.toString());
+					stmt.setString(3, contactInfo.getHomePhoneNumber());
+					stmt.setString(4, contactInfo.getCellPhoneNumber());
+					stmt.setString(5, contactInfo.getName());
+					// TODO: other fields
+					
+					stmt.executeUpdate();
+					
+					keys = stmt.getGeneratedKeys();
+					if (!keys.next()) {
+						throw new SQLException("Couldn't get generated key for contact info");
+					}
+					contactInfo.setId(keys.getInt(1));
+					
+					return contactInfo;
+				} finally {
+					DBUtil.closeQuietly(keys);
+					DBUtil.closeQuietly(stmt);
+				}
+			}
+		});
+	}
 
 	@Override
 	public void addUserToDB(final User user) {
@@ -243,11 +283,29 @@ public class DerbyDatabase implements IDatabase {
 				try {
 					ArrayList<UserWithContactInfo> result = new ArrayList<UserWithContactInfo>();
 
-					stmt = conn.prepareStatement("users");
-
+					stmt = conn.prepareStatement("select users.*, contact_info.* from users, contact_info where users.id = contact_info.user_id");
 					resultSet = stmt.executeQuery();
+
 					while (resultSet.next()) {	
-						result.add(new UserWithContactInfo());						
+						User user = new User();
+						ContactInfo contactInfo = new ContactInfo();
+						
+						user.setId(resultSet.getInt(1));
+						user.setUsername(resultSet.getString(2));
+						user.setPassword("***");
+						
+						contactInfo.setId(resultSet.getInt(4));
+						// etc.
+						contactInfo.setUserId(resultSet.getInt(5));
+						ContactInfoType type = ContactInfoType.valueOf(resultSet.getString(6));
+						contactInfo.setHomephoneNumber(resultSet.getString(7));
+						contactInfo.setCellphoneNumber(resultSet.getString(8));
+						contactInfo.setName(resultSet.getString(9));
+
+						UserWithContactInfo userWithContactInfo = new UserWithContactInfo();
+						userWithContactInfo.setUser(user);
+						userWithContactInfo.setContactInfo(contactInfo);
+						result.add(userWithContactInfo);						
 					}					
 					return result;
 				} finally {

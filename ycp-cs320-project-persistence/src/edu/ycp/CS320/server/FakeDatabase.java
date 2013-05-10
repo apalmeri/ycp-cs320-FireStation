@@ -79,6 +79,12 @@ public class FakeDatabase implements IDatabase, Serializable {
 	public void addContactToDB() {
 		
 	}
+	
+	@Override
+	public ContactInfo addContactInfo(ContactInfo contactInfo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 	public void addEquipmentToDB() {
 		

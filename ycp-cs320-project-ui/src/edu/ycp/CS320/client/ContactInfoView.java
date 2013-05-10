@@ -1,5 +1,6 @@
 package edu.ycp.CS320.client;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,6 +21,7 @@ import edu.ycp.CS320.shared.ISubscriber;
 import edu.ycp.CS320.shared.UserWithContactInfo;
 
 import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.TextBox;
 //add commment
 public class ContactInfoView extends Composite implements ISubscriber {
 	private Button btnHomePage;
@@ -27,12 +29,14 @@ public class ContactInfoView extends Composite implements ISubscriber {
 	private ArrayList<UserWithContactInfo> contactInfoList; // model
 	private ListBox listBox;
 	private ListBox listBox_1;
+	private LayoutPanel layout;
 
 	public ContactInfoView() {
 
-		final LayoutPanel layout = new LayoutPanel();
+		layout = new LayoutPanel();
 		initWidget(layout);
-		layout.setSize("627px", "523px");
+		layout.setSize("2000px", "2000px");
+		
 
 		listBox = new ListBox();
 		listBox.addClickHandler(new ClickHandler() {
@@ -41,15 +45,16 @@ public class ContactInfoView extends Composite implements ISubscriber {
 
 			}
 		});
+		/*
 		layout.add(listBox);
-		layout.setWidgetLeftWidth(listBox, 58.0, Unit.PX, 210.0, Unit.PX);
-		layout.setWidgetTopHeight(listBox, 48.0, Unit.PX, 339.0, Unit.PX);
+		layout.setWidgetLeftWidth(listBox, 58.0, Unit.PX, 208.0, Unit.PX);
+		layout.setWidgetTopHeight(listBox, 48.0, Unit.PX, 148.0, Unit.PX);
 		listBox.setVisibleItemCount(5);
-
+		*/
 		listBox_1 = new ListBox();
 		layout.add(listBox_1);
-		layout.setWidgetLeftWidth(listBox_1, 365.0, Unit.PX, 235.0, Unit.PX);
-		layout.setWidgetTopHeight(listBox_1, 48.0, Unit.PX, 339.0, Unit.PX);
+		layout.setWidgetLeftWidth(listBox_1, 67.0, Unit.PX, 438.0, Unit.PX);
+		layout.setWidgetTopHeight(listBox_1, 75.0, Unit.PX, 146.0, Unit.PX);
 		listBox_1.setVisibleItemCount(5);
 
 		Label lblContactInformation = new Label("Contact Information");
@@ -76,7 +81,7 @@ public class ContactInfoView extends Composite implements ISubscriber {
 	public void activate() {
 		// TOOD: use an RPC call to get the contact info data and add it to the list
 		loadContactList();
-
+		
 	}
 
 	private void loadContactList() {
@@ -84,16 +89,16 @@ public class ContactInfoView extends Composite implements ISubscriber {
 			@Override
 			public void onSuccess(ArrayList<UserWithContactInfo> ContactList) {		
 				GWT.log("received users/contact info");
+				GWT.log("Received " + ContactList.size() + " contacts");
 				contactInfoList.clear();
 				contactInfoList.addAll(ContactList);
-				
 				update();
 			}
 
 			@Override
 			public void onFailure(Throwable caught) {
 				// TODO Auto-generated method stub
-
+				GWT.log("RPC call to load contact list failed", caught);
 			}
 
 		});
@@ -108,11 +113,11 @@ public class ContactInfoView extends Composite implements ISubscriber {
 
 	private void update() {
 		// clear list box, add all contacts to it
-		listBox.clear();
+		//listBox.clear();
 		
 		for (UserWithContactInfo info : contactInfoList) {
-			String s = info.getUser().getUsername() + " - " + info.getContactInfo().getCellPhoneNumber(); 
-			listBox.addItem(s);
+			String s = info.getUser().getUsername() + " - " + info.getContactInfo().getCellPhoneNumber() + " - " + info.getContactInfo().getHomePhoneNumber() + " - " + info.getContactInfo().getId() + " - " + info.getContactInfo().getName();
+			listBox_1.addItem(s);
 		}
 	}
 }

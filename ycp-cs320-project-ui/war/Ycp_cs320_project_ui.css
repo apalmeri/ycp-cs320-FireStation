@@ -107,4 +107,10 @@ Title {
 .submitButton {
 	background-color: darkgreen;
 }
-
+.ContactInfoViewStyle{
+	background: #F7F2E0;
+	color: Black;
+	font-size: 18px;
+	font-weight: bolder;
+	background-color: #F7F2E0;
+}

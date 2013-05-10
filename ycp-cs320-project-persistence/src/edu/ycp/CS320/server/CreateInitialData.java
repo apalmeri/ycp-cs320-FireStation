@@ -12,11 +12,8 @@ import edu.ycp.CS320.shared.User;
 
 public class CreateInitialData {
 
-	
 
-	
-
-	private static ContactInfoType HOME;
+	//private static ContactInfoType HOME;
 
 	public static void main(String[] args) throws SQLException {
 		DerbyDatabase db = new DerbyDatabase();			
@@ -25,7 +22,7 @@ public class CreateInitialData {
 //		User jake = new User(-1, "jake", "pw");
 //		User josh = new User(-1, "josh", "pw");
 		User alana = new User(-1, "alana", "pw");				
-//		
+		
 //		db.addUserToDB(drew);
 //		db.addUserToDB(jake);
 //		db.addUserToDB(josh);
@@ -39,15 +36,6 @@ public class CreateInitialData {
 	//FireApparatusSpec spec1 = new FireApparatusSpec("x", "y", "z", 2013, "engine", "this an engine");		
 	//	db.addFireApparatusSpecToDB(spec1);
 
-	//	User drew = new User(-1, "drew", "pw");
-		//User jake = new User(-1, "jake", "pw");
-		//User josh = new User(-1, "josh", "pw");
-	//	User alana = new User(-1, "alana", "pw");				
-		
-	//	db.addUserToDB(drew);
-	//	db.addUserToDB(jake);
-	//	db.addUserToDB(josh);
-	//	db.addUserToDB(alana);
 		
 		/*
 		
@@ -75,12 +63,15 @@ public class CreateInitialData {
 		event.setPrice(50);
 		
 		ContactInfo contact = new ContactInfo();
+		contact.setType(ContactInfoType.HOME);
+		contact.setUserId(alana.getId());
 		contact.setCellphoneNumber("0-000-0000");
 		contact.setHomephoneNumber("9-999-9999");
-		contact.setName("fake");	
-		contact.setType(HOME);
+		contact.setName("Alana");	
+		//contact.setType(HOME);
+		db.addContactInfo(contact);
 		
-		//add contact/event to DB
+		
 		
 		System.out.println("Successfully created initial data");
 	}
